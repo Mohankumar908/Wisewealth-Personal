@@ -41,7 +41,9 @@ function getAiClient(): GoogleGenAI | null {
 }
 
 const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const PORT = process.env.NODE_ENV === 'development'
+  ? 3000
+  : (process.env.PORT ? parseInt(process.env.PORT, 10) : 8080);
 
 app.use(express.json());
 
@@ -963,10 +965,7 @@ Return your response as a valid JSON array of objects, where each object has the
 // ==========================================
 
 async function startServer() {
-  const isProduction =
-    process.env.NODE_ENV === 'production' ||
-    Boolean(process.env.PORT && process.env.PORT !== '3000') ||
-    (process.env.NODE_ENV !== 'development' && fs.existsSync(path.join(process.cwd(), 'dist', 'index.html')));
+  const isProduction = process.env.NODE_ENV === 'production' || (!process.env.NODE_ENV && fs.existsSync(path.join(process.cwd(), 'dist', 'index.html')));
 
   if (!isProduction) {
     const vite = await createViteServer({
