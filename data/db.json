@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "6cedadd0dd92a579",
+      "email": "mohanvkumar8866@gmail.com",
+      "username": "mohanvkumar8866",
+      "first_name": "Mohankumar",
+      "last_name": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-09-19T04:37:46.472Z",
+      "updated_at": "2026-09-19T04:37:46.472Z",
+      "password_hash": "8d0dfecb804d827a95b06dcfe830cb2ddccbbd609d4c42b1c4505f1c805cd0e14fe8ff77dffc911e94e4f24e36f510eafd414dcd945594c3dba5c632e38926e4",
+      "salt": "f48e9c597572f50cc39ff4fc182c62dd"
+    }
+  ],
+  "plans": [],
+  "expenses": [],
+  "budgets": [],
+  "assets": [],
+  "liabilities": []
+}

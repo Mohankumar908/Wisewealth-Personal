@@ -1,0 +1,6 @@
+{
+  "name": "WealthWise",
+  "description": "Plan Smart. Grow Wealth. A comprehensive financial planning platform featuring compound interest, SIP, and goal-based calculators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
