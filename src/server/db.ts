@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { User, InvestmentPlan, Expense, Budget, Asset, Liability, AdminOverview, AdminUserListItem } from '../types.js';
+import type { User, InvestmentPlan, Expense, Budget, Asset, Liability, AdminOverview, AdminUserListItem } from '../types.ts';
 
 const DB_DIR = path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DB_DIR, 'db.json');

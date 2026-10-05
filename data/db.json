@@ -7,11 +7,12 @@
       "first_name": "Mohankumar",
       "last_name": "",
       "is_active": true,
-      "is_staff": false,
+      "is_staff": true,
       "created_at": "2026-09-19T04:37:46.472Z",
-      "updated_at": "2026-09-19T04:37:46.472Z",
-      "password_hash": "8d0dfecb804d827a95b06dcfe830cb2ddccbbd609d4c42b1c4505f1c805cd0e14fe8ff77dffc911e94e4f24e36f510eafd414dcd945594c3dba5c632e38926e4",
-      "salt": "f48e9c597572f50cc39ff4fc182c62dd"
+      "updated_at": "2026-10-05T13:39:22.006Z",
+      "password_hash": "4b0e937748a2d5b30b9b46d89d9ac2b4a7aaa47e7bcb76aa9f4a7b074d9be878223c017e968c48d55b17415be2f3552ab55f67a5b4185495f1d89871e13b83a0",
+      "salt": "36a3eb4258f54de3658b73b5564ced92",
+      "role": "admin"
     }
   ],
   "plans": [],

@@ -3,19 +3,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import express, { Request, Response, NextFunction } from 'express';
+import express, { type Request, type Response, type NextFunction } from 'express';
 import path from 'path';
+import fs from 'fs';
 import crypto from 'crypto';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from "@google/genai";
-import { db } from './src/server/db.js';
+import { db } from './src/server/db.ts';
 import {
   calculateCompoundInterest,
   calculateSIP,
   calculateGoalSIP,
   calculateInflation,
   calculateStepUpSIP
-} from './src/server/finance.js';
+} from './src/server/finance.ts';
 
 // Setup environment variables
 import dotenv from 'dotenv';
@@ -40,7 +41,7 @@ function getAiClient(): GoogleGenAI | null {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json());
 
@@ -962,7 +963,12 @@ Return your response as a valid JSON array of objects, where each object has the
 // ==========================================
 
 async function startServer() {
-  if (process.env.NODE_ENV !== 'production') {
+  const isProduction =
+    process.env.NODE_ENV === 'production' ||
+    Boolean(process.env.PORT && process.env.PORT !== '3000') ||
+    (process.env.NODE_ENV !== 'development' && fs.existsSync(path.join(process.cwd(), 'dist', 'index.html')));
+
+  if (!isProduction) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -977,7 +983,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[WealthWise Server] listening on http://0.0.0.0:${PORT} (Production: ${process.env.NODE_ENV === 'production'})`);
+    console.log(`[WealthWise Server] listening on http://0.0.0.0:${PORT} (Production: ${isProduction})`);
   });
 }
 

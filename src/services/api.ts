@@ -50,12 +50,23 @@ class ApiClient {
 
     try {
       const response = await fetch(`${BASE_URL}${endpoint}`, config);
-      const data = await response.json();
+      const text = await response.text();
+      let data: any;
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        return {
+          success: false,
+          message: response.ok
+            ? 'Unexpected response from server.'
+            : `Server returned error (${response.status}). Please try again.`,
+        };
+      }
       
       if (!response.ok) {
         return {
           success: false,
-          message: data.message || 'An error occurred during request.',
+          message: data.message || `Request failed with status ${response.status}.`,
           errors: data.errors,
         };
       }

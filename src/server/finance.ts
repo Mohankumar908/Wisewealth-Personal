@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {
+import type {
   CompoundCalcRequest,
   CompoundCalcResponse,
   SIPCalcRequest,
@@ -15,7 +15,7 @@ import {
   StepUpSIPRequest,
   StepUpSIPResponse,
   Projection
-} from '../types.js';
+} from '../types.ts';
 
 /**
  * Calculates Compound Interest.
